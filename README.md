@@ -1,7 +1,13 @@
+
+
 Github repo for building docker containers to use in the Mastering Ansible Course. 
 
+Disclaimer:
+----------
 This is a personal repo and contents here are strictly for testing purposes for following along in the Mastering Ansible class. There is no relationship between the author/teacher of tthe class. Please use at your own discretion.   
 
+How to use:
+-----------
 
 clone the repo:
 ```
