@@ -8,6 +8,7 @@ RUN apt-get install -y software-properties-common && \
     apt-add-repository ppa:ansible/ansible -y && \ 
     apt-get update && apt-get install -y \
     ansible \
+    vim \
     openssh-server
 
 # Install ssh; Ansible uses ssh. 
