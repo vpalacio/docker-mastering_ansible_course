@@ -6,7 +6,7 @@ Disclaimer:
 ----------
 This is a personal repo and contents here are strictly for testing purposes for following along in the Mastering Ansible class. There is no relationship between the author/teacher of the class. Please use at your own discretion.   
 
-The containers are built to permit root login via ssh to the worker nodes. I intend
+The containers are built to permit root login via ssh to the worker nodes. This is not best practice and is only used here to facilitate practice linux containers to use alongside the class. One should consider changing the password in the Dockerfile.
 
 How to use:
 -----------
@@ -15,6 +15,12 @@ clone the repo:
 ```
 git clone git@github.com:vpalacio/docker-mastering_ansible_course.git
 cd docker-mastering_ansible_course
+```
+
+change the ssh password to something other than password in the Dockerfile.
+```
+# Change password
+RUN echo 'root:password' | chpasswd
 ```
 
 build the Dockerfile:
@@ -37,15 +43,15 @@ Update your control node's /etc/hosts file to have the IP addresses of your work
 # You can find the IP addresses of your worker nodes by using `docker inspect` on the coreOS host
 $ docker inspect vpalacio_<worker_name>
 
-# Log into control node:
+# Log into the control node:
 docker exec -it vpalacio_control /bin/bash
 
-# And edit /etc/hosts
+# And edit it's /etc/hosts file
    $ vi /etc/hosts
 
 ```
 
-for the ansible control node, generate ssh key
+for the ansible control node, generate a ssh key and publish it to your worker nodes.
 ```
 # log into control node:
 docker exec -it vpalacio_control /bin/bash
