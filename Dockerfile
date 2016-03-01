@@ -4,6 +4,7 @@ MAINTAINER Victor Palacio <vpalacio@gmail.com>
 
 # https://docs.ansible.com/ansible/intro_installation.html
 # https://docs.ansible.com/ansible/intro_installation.html#latest-releases-via-apt-ubuntu
+
 RUN apt-get install -y software-properties-common && \ 
     apt-add-repository ppa:ansible/ansible -y && \ 
     apt-get update && apt-get install -y \
@@ -11,10 +12,11 @@ RUN apt-get install -y software-properties-common && \
     vim \
     openssh-server
 
-# Install ssh; Ansible uses ssh. 
+# Ansible uses ssh. 
 # https://docs.docker.com/engine/examples/running_ssh_service/
-RUN apt-get update && apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
+
+# You can change the default password here to something else. 
 RUN echo 'root:password' | chpasswd
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
