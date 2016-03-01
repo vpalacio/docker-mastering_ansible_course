@@ -19,11 +19,11 @@ cd docker-mastering_ansible_course
 
 change the ssh password to something other than password in the Dockerfile.
 ```
-# Change password here:
+# Consider changing the password here:
 RUN echo 'root:password' | chpasswd
 ```
 
-build the Dockerfile:
+build the Dockerfile and give it a tag of our own:
 ```
 docker build --rm -t udemy_mastering-ansible .
 ```
@@ -34,6 +34,7 @@ docker run -d -P --cap-add=all --hostname=<worker_name> --name <github_handle>_<
 
 # As an example:
 docker run -d -P --cap-add=all --hostname=control --name vpalacio_control --privileged udemy_mastering-ansible
+docker run -d -P --cap-add=all --hostname=app01 --name vpalacio_app01 --privileged udemy_mastering-ansible
 
 ```
 
