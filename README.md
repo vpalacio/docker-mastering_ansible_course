@@ -42,12 +42,12 @@ you have to make sure that the worker nodes are known to the control node via DN
 Update your control node's /etc/hosts file to have the IP addresses of your worker nodes. 
 ```
 # You can find the IP addresses of your worker nodes by using `docker inspect` on the coreOS host
-$ docker inspect vpalacio_<worker_name>
+$ docker inspect vpalacio_app01
 
 # Log into the control node:
 docker exec -it vpalacio_control /bin/bash
 
-# And edit it's /etc/hosts file
+# And edit it's /etc/hosts file with the IP/hostname of your worker nodes:
    $ vi /etc/hosts
 
 ```
@@ -60,8 +60,10 @@ docker exec -it vpalacio_control /bin/bash
    $ ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa
 
    # From within the control node, copy the key to the worker nodes: 
-   ssh-copy-id <worker-name>
+   ssh-copy-id <worker_name>
+      $ ssh-copy-id app01
 
    # make sure you have ssh access without being prompt:
-   ssh <worker_name>
+   ssh <workern_name>
+      $ ssh app01
 ```   
