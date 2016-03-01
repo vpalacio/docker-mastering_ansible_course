@@ -19,7 +19,7 @@ cd docker-mastering_ansible_course
 
 change the ssh password to something other than password in the Dockerfile.
 ```
-# Change password
+# Change password here:
 RUN echo 'root:password' | chpasswd
 ```
 
