@@ -66,4 +66,22 @@ docker exec -it vpalacio_control /bin/bash
    # make sure you have ssh access without being prompt:
    ssh <workern_name>
       $ ssh app01
-```   
+```
+
+FAQ
+---
+
+Issue connecting to worker nodes:
+* if you encounter the following error below: 
+```
+root@control:/etc/ansible# ansible -i /tmp/dev -m ping app01  
+app01 | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "SSH encountered an unknown error during the connection. We recommend you re-run the command using -vvvv, which will enable SSH debugging output to help diagnose the issue", 
+    "unreachable": true
+}
+```
+* then you may benefit from updating your ansible config file to `transport = paramiko` in your /etc/ansible.cfg file
+* reference: https://github.com/ansible/ansible/issues/6363
+   * https://github.com/ansible/ansible/issues/6363#issuecomment-49349902
+* reference: http://docs.ansible.com/ansible/intro_configuration.html#transport   
